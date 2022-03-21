@@ -16,7 +16,7 @@ return array(
 					sprintf(
 						/* Translators: Theme link. */
 						esc_html__( 'Created with %s', 'maisie' ),
-						'<a href="' . esc_url( __( 'https://example.com', 'maisie' ) ) . '" rel="nofollow">Maisie</a>'
+						'<a href="' . esc_url( __( 'https://github.com/chthonic-ds/maisie', 'maisie' ) ) . '" rel="nofollow">Maisie</a>'
 					) . '
 					<br>
 					©2022</p>
