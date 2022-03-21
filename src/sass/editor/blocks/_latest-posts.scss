@@ -1,0 +1,16 @@
+// Yes, this is intentional: not applying grid when .is-grid present due to conflicting with editor styles. @todo Review.
+.wp-block-latest-posts:not(.is-grid) {
+	display: grid;
+	gap: var(--wp--custom--spacing--block-gap--medium);
+}
+
+.wp-block-latest-posts li {
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+}
+
+.wp-block-latest-posts__post-author,
+.wp-block-latest-posts__post-date {
+	margin-top: 0 !important;
+}

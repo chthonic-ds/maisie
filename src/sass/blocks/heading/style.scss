@@ -1,0 +1,12 @@
+.wp-block-post-content {
+	> h1.alignfull,
+	> h2.alignfull,
+	> h3.alignfull,
+	> h4.alignfull,
+	> h5.alignfull,
+	> h6.alignfull {
+		margin-left: var(--wp--custom--spacing--block-gap--medium);
+		margin-right: var(--wp--custom--spacing--block-gap--medium);
+		max-width: calc(100% - var(--wp--custom--spacing--block-gap--large));
+	}
+}

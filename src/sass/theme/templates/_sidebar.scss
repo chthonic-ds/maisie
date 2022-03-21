@@ -1,0 +1,37 @@
+.has-sidebar {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: var(--wp--custom--spacing--block-gap--medium);
+	row-gap: var(--wp--custom--spacing--block-gap--large);
+}
+
+.post-sidebar {
+	flex-basis: 265px;
+	flex-grow: 1;
+}
+
+.post-content {
+	flex-basis: 0;
+	flex-grow: 999;
+	min-width: 63%;
+}
+
+.has-sidebar--left {
+	.post-content {
+		order: 1; // Value is overridden when elements are stacked.
+	}
+}
+
+.post-sidebar {
+	margin-top: 0;
+}
+
+.post-template-sidebar-left,
+.post-template-sidebar-right {
+
+	// These containers are no longer top-level wrappers and do not need to inherit grid characteristics.
+	.has-sidebar > *,
+	.entry-content {
+		display: initial;
+	}
+}

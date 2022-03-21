@@ -1,0 +1,4 @@
+.wp-block-navigation-link {
+	margin-right: 0; // Override native editor style.
+	min-width: 0 !important; // Override for possible hacky fix to force width for newly-added blocks.
+}

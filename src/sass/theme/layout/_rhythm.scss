@@ -1,0 +1,114 @@
+.wp-site-blocks {
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+
+	> * {
+		width: 100%; // Required for refactor supporting "inherit default layout".
+	}
+
+	footer {
+		margin-top: auto !important;
+	}
+}
+
+.wp-site-blocks * {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+ 
+// Default vertical spacing.
+.wp-site-blocks * + * {
+	margin-top: var(--wp--custom--spacing--block-gap--small);
+}
+
+.wp-site-blocks h1 + *,
+.wp-site-blocks h2 + *,
+.wp-site-blocks h3 + *,
+.wp-site-blocks h4 + *,
+.wp-site-blocks h5 + *,
+.wp-site-blocks h6 + * {
+//.wp-site-blocks p + p {
+	margin-top: calc(.5 * var(--wp--custom--spacing--block-gap--small));
+}
+
+.wp-site-blocks {
+	.wp-block-post-content > * + h2,
+	.wp-block-post-content > * + h3,
+	// Blocks.
+	.wp-block-columns,
+	.wp-block-columns + *,
+	.wp-block-buttons,
+	.wp-block-gallery,
+	.wp-block-gallery + *,
+	.wp-block-image:not(.box__media),
+	.wp-block-image + *:not(.box__body),
+	.wp-block-embed,
+	.wp-block-embed + *,
+	.wp-block-media-text,
+	.wp-block-media-text + *,
+	.wp-block-separator,
+	.wp-block-separator + *,
+	.wp-block-pullquote,
+	.wp-block-pullquote + *,
+	.wp-block-post-content .alignfull,
+	.wp-block-post-content .alignfull + *,
+	* + *.has-background,
+	* + style + *.has-background,
+	*.has-background + *,
+	*.has-background + style + *,
+	.maisie-layout-grid,
+	.maisie-layout-grid + * {
+		margin-top: var(--wp--custom--spacing--block-gap--medium);
+	}
+
+	// @note Added as part of shifting "rhythm" to .wp-site-blocks; need review/relocation.
+	header + *,
+	.wp-block-navigation__responsive-container,
+	.wp-block-navigation-item,
+	// End @note.
+
+	.wp-block-group > :first-child,
+	.wp-block-post-content,
+	.wp-block-post-content > *:first-child,
+	.wp-block-post-template,
+	.wp-block-post-template > *,
+	.wp-block-button,
+	.wp-block-column,
+	.wp-block-column > *:first-child,
+	.has-background > *:first-child:not(.box__body),
+	.alignfull + figure.alignfull, // @todo. Review.
+	figure.alignfull + .alignfull, // @todo. Review.
+	.has-background.alignfull > *:first-child,
+	.has-background.alignfull + .has-background.alignfull,
+	.has-background.alignfull + style + .has-background.alignfull,
+	li:not(.wp-block-post),
+	.wp-block-navigation-link__container,
+	.wp-block-quote :first-child,
+	.wp-block-cover__inner-container,
+	.wp-block-cover__inner-container :first-child,
+	.wp-block-cover__gradient-background + .wp-block-cover__image-background {
+		margin-top: 0;
+	}
+
+	// Spacer block should never have margins.
+	* + .wp-block-spacer,
+	.wp-block-spacer + * {
+		margin: 0 !important;
+	}
+
+	main,
+	/*
+		@todo Experimental, needs to be stress-tested.
+		May mean other more specific rules can be removed.
+		Originally introduced to handle column.has-background with child group.has-background.	
+	*/
+	.has-background > .has-background > :first-child {
+		margin-top: 0 !important;
+	}
+
+	.wp-block-group > :only-child,
+	.has-background > .has-background > :last-child {
+		margin-bottom: 0 !important;
+	}
+}

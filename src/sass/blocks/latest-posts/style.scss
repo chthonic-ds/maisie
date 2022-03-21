@@ -1,0 +1,22 @@
+.wp-block-latest-posts {
+	display: grid;
+	gap: var(--wp--custom--spacing--block-gap--medium);
+	list-style-type: none;
+}
+
+// Grid layout variation. Automatically manages column width, does not listen to user-set value.
+@supports (width: min(350px, 100%)) {
+	.wp-block-latest-posts__list.is-grid {
+		grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr)) !important;
+	}
+}
+
+.wp-block-latest-posts li {
+	display: flex;
+	flex-direction: column;
+}
+
+.wp-block-latest-posts__post-author,
+.wp-block-latest-posts__post-date {
+	margin-top: 0 !important;
+}

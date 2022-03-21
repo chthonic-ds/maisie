@@ -1,0 +1,6 @@
+@import '../../blocks/list/style';
+
+.is-root-container .wp-block-list {
+	padding: 0;
+	margin-left: 2.25rem; // @magic-value Not using `list-style-position:inside` to avoid line-wrap indentation issues.
+}

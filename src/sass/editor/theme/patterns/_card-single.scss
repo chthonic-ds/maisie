@@ -1,0 +1,37 @@
+@import '../../../theme/patterns/card-single';
+
+.box__media {
+	margin-top: 0 !important;
+}
+
+.box--unpadded .box__body {
+	margin-top: var(--wp--custom--spacing--block-gap--small) !important;
+}
+
+.wp-block-columns:not(.is-style-columns-has-full-height-cards) .box--padded .box__foot,
+.box--title-first .box__body,
+.box__foot > *:first-child {
+	margin-top: 0 !important;
+}
+
+.box-title + * {
+	margin-top: calc(.5 * var(--wp--custom--spacing--block-gap--small)) !important;
+}
+
+
+.box--title-first .box-title + * {
+	margin-top: 0 !important;
+}
+
+// Manage figcaption position.
+// @todo Implement same CSS Grid layout used on front-end.
+.box__media {
+	position: relative;
+}
+
+.box__media figcaption {
+	font-size: var(--wp--preset--font-size--tiny) !important;
+	position: absolute;
+	left: 0;
+	top: 0;
+}

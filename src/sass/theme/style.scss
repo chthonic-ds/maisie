@@ -1,0 +1,16 @@
+@import 'components/form';
+@import 'layout/style';
+@import 'patterns/style';
+@import 'templates/style';
+@import 'template-parts/style';
+
+/* Global. */
+img {
+	height: auto;
+	max-width: 100%;
+}
+
+button:hover,
+input[type='submit']:hover {
+	cursor: pointer;
+}

@@ -1,0 +1,25 @@
+// Default when `has-background` is applied.
+.has-background:not(main):not(nav):not(.wp-block-navigation__responsive-container):not(.wp-block-cover):not(.wp-block-separator):not(.wp-block-button__link):not(.wp-block-search__button):not(.box) {
+	padding: var(--wp--custom--spacing--block-gap--small);
+}
+
+[data-align="full"] > .has-background {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+// Buttons.
+.wp-block-button__link,
+.wp-block-button__link.has-background {
+	padding: calc(.5 * var(--wp--custom--spacing--block-gap--small)) var(--wp--custom--spacing--block-gap--small);
+}
+
+// Columns has break-out width.
+[data-align="align-full"] > .wp-block-columns { 
+	padding-left: var(--wp--custom--spacing--block-gap--medium);
+    padding-right: var(--wp--custom--spacing--block-gap--medium);
+}
+
+.wp-block-separator {
+	padding: 0;
+}

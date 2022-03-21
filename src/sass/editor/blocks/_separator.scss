@@ -1,0 +1,11 @@
+@import '../../blocks/separator/style';
+
+.wp-block-separator {
+	min-width: auto !important;
+}
+
+// Block editor only provides centre alignment when Separator a child of container block.
+[data-align="center"] .wp-block-separator {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}

@@ -1,0 +1,28 @@
+.edit-post-visual-editor__post-title-wrapper + .is-root-container {
+	@import '../../../theme/layout/typography';
+
+	// @todo. This will need to be reviewed and heavily tested! Difficult to understand potential side-effects.
+	> .wp-block {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+}
+
+// Prevent ligatures in editor.
+.edit-post-visual-editor__post-title-wrapper + .is-root-container {
+	font-variant-ligatures: no-common-ligatures;
+}
+
+// Manage page title presentation.
+.edit-post-visual-editor__post-title-wrapper {
+	padding-bottom: var(--wp--custom--spacing--block-gap--large);
+	padding-top: var(--wp--custom--spacing--block-gap--large);
+}
+
+.edit-post-visual-editor__post-title-wrapper .editor-post-title {
+	margin: 0 !important;
+}
+
+.editor-post-title__block .editor-post-title__input {
+	font-size: var(--wp--preset--font-size--x-large);
+}

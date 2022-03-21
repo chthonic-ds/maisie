@@ -1,0 +1,188 @@
+.wp-block-cover {
+	align-items: center;
+	justify-content: center;
+	max-width: 100%; // Prevents overflow if user sets minimum height value (will conflict with aspect-ratio value).
+	position: relative;
+	width: 100%;
+}
+
+.wp-block-cover.has-parallax {
+	background-attachment: fixed;
+	background-position: 50% 50%;
+	background-size: cover;
+}
+
+@supports (-webkit-overflow-scrolling: touch) {
+	.wp-block-cover.has-parallax {
+		background-attachment: scroll;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.wp-block-cover.has-parallax {
+		background-attachment: fixed;
+	}
+}
+
+.wp-block-cover.is-repeated {
+	background-repeat: repeat;
+	background-size: auto;
+}
+
+.wp-block-cover.has-background-dim:not([class*=-background-color]) {
+	background-color: var(--wp--preset--color--black);
+}
+
+.wp-block-cover.has-background-dim:before {
+	content: "";
+	background-color: inherit;
+}
+
+.wp-block-cover.has-background-dim::before,
+.wp-block-cover .wp-block-cover__gradient-background{
+	bottom: 0;
+	left: 0;
+	opacity: .5;
+	position: absolute;
+	right: 0;
+	top: 0;
+	z-index: 1;
+}
+
+.wp-block-cover .has-background-dim.has-background-dim-10,
+.wp-block-cover .has-background-dim.has-background-dim-10:not(.has-background-gradient):before{
+	opacity: .1
+}
+
+.wp-block-cover .has-background-dim.has-background-dim-20,
+.wp-block-cover .has-background-dim.has-background-dim-20:not(.has-background-gradient):before{
+	opacity:.2
+}
+
+.wp-block-cover .has-background-dim.has-background-dim-30,
+.wp-block-cover .has-background-dim.has-background-dim-30:not(.has-background-gradient):before {
+	opacity:.3
+}
+
+.wp-block-cover .has-background-dim.has-background-dim-40,
+.wp-block-cover .has-background-dim.has-background-dim-40:not(.has-background-gradient):before {
+	opacity:.4
+}
+
+.wp-block-cover .has-background-dim.has-background-dim-50,
+.wp-block-cover .has-background-dim.has-background-dim-50:not(.has-background-gradient):before {
+	opacity:.5
+}
+
+.wp-block-cover .has-background-dim.has-background-dim-60,
+.wp-block-cover .has-background-dim.has-background-dim-60:not(.has-background-gradient):before {
+	opacity:.6
+}
+
+.wp-block-cover .has-background-dim.has-background-dim-70,
+.wp-block-cover .has-background-dim.has-background-dim-70:not(.has-background-gradient):before {
+	opacity:.7
+}
+
+.wp-block-cover .has-background-dim.has-background-dim-80,
+.wp-block-cover .has-background-dim.has-background-dim-80:not(.has-background-gradient):before {
+	opacity:.8
+}
+
+.wp-block-cover .has-background-dim.has-background-dim-90,
+.wp-block-cover .has-background-dim.has-background-dim-90:not(.has-background-gradient):before {
+	opacity:.9
+}
+
+.wp-block-cover .has-background-dim.has-background-dim-100,
+.wp-block-cover .has-background-dim.has-background-dim-100:not(.has-background-gradient):before {
+	opacity:1
+}
+
+.wp-block-cover .wp-block-cover__inner-container {
+	color: #fff; // Default colour if none specified.
+	display: flex; // This is an intentional choice...
+	flex-direction: column;
+	padding: var(--wp--custom--spacing--block-gap--medium);
+	z-index: 1; // Required to sit above "dim" layer.
+}
+
+// Alignment.
+.wp-block-cover.is-position-top-left {
+	align-items: start;
+	justify-content: start;
+}
+
+.wp-block-cover.is-position-top-center {
+	align-items: start;
+	justify-content: center;
+}
+
+.wp-block-cover.is-position-top-right {
+	align-items: start;
+	justify-content: end;
+}
+
+.wp-block-cover.is-position-center-left {
+	align-items: center;
+	justify-content: start;
+}
+
+.wp-block-cover.is-position-center-center {
+	align-items: center;
+	justify-content: center;
+}
+
+.wp-block-cover.is-position-center-right {
+	align-items: center;
+	justify-content: end;
+}
+
+.wp-block-cover.is-position-bottom-left {
+	align-items: end;
+	justify-content: start;
+}
+
+.wp-block-cover.is-position-bottom-center {
+	align-items: end;
+	justify-content: center;
+}
+
+.wp-block-cover.is-position-bottom-right {
+	align-items: end;
+	justify-content: end;
+}
+
+.wp-block-cover img.wp-block-cover__image-background,
+.wp-block-cover video.wp-block-cover__video-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+// @todo. This was added when enabling grid styles for Cover; needs to be properly tested.
+.wp-block-cover.alignfull > span:first-child,
+.wp-block-cover.alignfull .wp-block-cover__image-background,
+.wp-block-cover.alignfull .wp-block-cover__video-background {
+	grid-column: 1 / -1;
+	width: 100% !important;
+}
+
+.wp-block-cover.alignfull .wp-block-cover__inner-container {
+	padding: 0;
+}
+
+.wp-block-cover.alignfull .has-text-align-center {
+	align-self: center;
+}
+
+// Override.
+// @todo. Requires testing.
+.wp-block-group.alignfull > .wp-block-cover .wp-block-cover__inner-container {
+	padding: 0;
+}

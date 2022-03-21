@@ -1,0 +1,12 @@
+@import '../../blocks/search/style';
+
+// Override core styles.
+.wp-block-search .wp-block-search__input {
+	padding-bottom: 0 !important;
+	padding-top: 0 !important;
+}
+
+.wp-block-search__button {
+	margin-left: 0 !important;
+	margin-top: 0 !important;
+}

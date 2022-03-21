@@ -1,0 +1,23 @@
+.wp-block-separator {
+	background-color: var(--wp--preset--color--grey-dark);
+	border: 0;
+	height: 1px;
+	margin-left: 0 !important;   // Avoids flex parent using browser auto defaults.
+	margin-right: 0 !important;  // Avoids flex parent using browser auto defaults.
+	padding: 0 !important;       // Avoids .has-background inheritance.
+	width: 6ch;
+}
+
+// Block editor only provides centre alignment when Separator a child of container block.
+.wp-site-blocks :not(.wp-block-post-content) > .wp-block-separator.aligncenter {
+	margin-left: auto !important;
+	margin-right: auto !important;
+}
+
+
+/* ~~~~~ [ Custom styles ] ~~~~~ */
+
+/* Wide (WP core) */
+.wp-block-separator.is-style-wide {
+	width: 100%;
+}

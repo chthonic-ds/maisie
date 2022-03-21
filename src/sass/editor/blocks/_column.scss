@@ -1,0 +1,6 @@
+@import '../../blocks/column/style';
+
+/* Override core editor styles. */
+.wp-block-column {
+	margin: 0 !important;
+}

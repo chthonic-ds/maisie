@@ -1,0 +1,50 @@
+/**
+ * Manages container padding.
+ */
+
+// Default when `has-background` is applied.
+.has-background:not(main):not(nav):not(.wp-block-navigation-item):not(.wp-block-cover):not(.wp-block-separator):not(.wp-block-button__link):not(.wp-block-search__button):not(.box):not(.alignfull) {
+	padding: var(--wp--custom--spacing--block-gap--small);
+}
+
+.alignfull.has-background {
+	padding-bottom: var(--wp--custom--spacing--block-gap--small);
+	padding-top: var(--wp--custom--spacing--block-gap--small);
+}
+
+*:not(.site-header).has-background.alignfull {
+	//padding-bottom: var(--wp--custom--spacing--block-gap--large);
+	//padding-top: var(--wp--custom--spacing--block-gap--large);
+}
+/*
+.has-background.alignfull {
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}*/
+
+// Buttons.
+.wp-block-button__link,
+.wp-block-button__link.has-background {
+	padding: calc(.75 * var(--wp--custom--spacing--block-gap--small)) var(--wp--custom--spacing--block-gap--small);
+}
+
+// Columns. // @todo. Investigate further; see example in Patterns page content.
+/*.wp-block-columns.has-background {
+	padding-bottom: var(--wp--custom--spacing--block-gap--medium);
+	padding-top: var(--wp--custom--spacing--block-gap--medium);
+}*/
+
+/**
+ * Horizontal padding.
+ */
+
+  // Columns has break-out width.
+.wp-block-columns.alignfull {
+	padding-left: var(--wp--custom--spacing--block-gap--small);
+    padding-right: var(--wp--custom--spacing--block-gap--small);
+}
+
+// Columns is direct child of container.
+.has-background.alignfull > .wp-block-columns {
+	padding: 0;
+}

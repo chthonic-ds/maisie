@@ -1,0 +1,23 @@
+@import '../../blocks/post-author/style';
+
+.wp-block-post-author__avatar {
+	margin-right: 0; // Override core style.
+
+	img {
+		display: block; // Remove white-space beneath `img`.
+	}
+}
+
+.wp-block-post-author__content {
+	margin-top: 0 !important;
+
+	> * {
+		margin-top: 0 !important;
+	}
+}
+
+.wp-block-post-author__bio {
+	font-size: inherit; // Reset core default.
+	margin-top: calc(.5 * var(--wp--custom--spacing--block-gap--small)) !important;
+	max-width: 100% !important;
+}

@@ -1,0 +1,43 @@
+.wp-block-social-link {
+	border-radius: 50%;
+	
+	.wp-block-social-link-anchor, // Required to override elements link style, if set on a parent.
+	.wp-social-link svg {
+		color: currentColor;
+		fill: currentColor;
+	}
+	
+}
+
+.wp-block-social-link-anchor {
+	align-items: center;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	padding: .4375em;
+
+	svg {
+		height: .9375em;
+		width: .9375em;
+	}
+}
+
+// Options: icon size.
+.has-small-icon-size .wp-block-social-link-anchor {
+	padding: .25em;
+
+	svg {
+		height: .75em;
+		width: .75em;
+	}
+}
+
+.has-large-icon-size .wp-block-social-link-anchor svg {
+	height: 1.5em;
+	width: 1.5em;
+}
+
+.has-huge-icon-size .wp-block-social-link-anchor svg {
+	height: 2em;
+	width: 2em;
+}

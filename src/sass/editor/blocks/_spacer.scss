@@ -1,0 +1,8 @@
+@import '../../blocks/spacer/style';
+
+// Block should inherit container size if custom style set.
+.wp-block-spacer.is-style-spacer-small .components-resizable-box__container,
+.wp-block-spacer.is-style-spacer-medium .components-resizable-box__container,
+.wp-block-spacer.is-style-spacer-large .components-resizable-box__container {
+	height: 100% !important;
+}

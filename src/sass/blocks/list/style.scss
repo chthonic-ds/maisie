@@ -1,0 +1,15 @@
+.wp-block-post-content ul:not(.wp-block-post-template):not(.wp-block-social-links):not(.wp-block-latest-posts),
+.wp-block-post-content ol {
+	font-size: inherit;
+	padding: 0;
+	margin-left: 1.125em; // @magic-value Not using `list-style-position:inside` to avoid line-wrap indentation issues.
+}
+
+
+/* ~~~~~ [ Custom styles ] ~~~~~ */
+
+/* No bullets. */
+.is-style-list-no-bullets {
+	list-style: none !important;
+	margin-left: 0 !important;
+}

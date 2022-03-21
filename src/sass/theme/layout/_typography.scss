@@ -1,0 +1,139 @@
+/**
+ * Type scale via utopia.fyi.
+ * @link https://utopia.fyi/type/calculator/?c=600,18,1.125,1200,20,1.2,7,2,&s=0.75|0.5|0.25,1.5|2|3|4|6,s-l
+ */
+
+body {
+	background-color: var(--wp--preset--color--white);
+	color: var(--wp--preset--color--grey-dark);
+}
+
+/* Families. */
+.is-font-display {
+	font-family: var(--wp--preset--font-family--display);
+}
+
+/* Type. */
+.has-tiny-font-size {
+	max-width: var(--wp--custom--typography--line-length--tiny, 70ch);
+}
+
+h5,
+h6,
+figcaption,
+.has-small-font-size {
+	max-width: var(--wp--custom--typography--line-length--small, 60ch);
+}
+
+h4,
+p,
+li,
+.has-medium-font-size {
+	max-width: var(--wp--custom--typography--line-length--medium, 52ch);
+}
+
+h3,
+.has-large-font-size {
+	max-width: var(--wp--custom--typography--line-length--large, 40ch);
+}
+
+h1,
+h2,
+.has-x-large-font-size {
+	max-width: var(--wp--custom--typography--line-length--x-large, 36ch);
+}
+
+.has-mega-font-size {
+	max-width: var(--wp--custom--typography--line-length--mega, 100%);
+}
+
+// Line heights for font size presets. Defaults are managed via theme.json > styles.
+.has-tiny-font-size {
+	line-height: var(--wp--custom--typography--line-height--tiny, 1.9);
+}
+
+figcaption,
+.has-small-font-size {
+	line-height: var(--wp--custom--typography--line-height--small, 1.7);
+}
+
+.has-medium-font-size {
+	line-height: var(--wp--custom--typography--line-height--medium, 1.58);
+}
+
+.has-large-font-size {
+	line-height: var(--wp--custom--typography--line-height--large, 1.42);
+}
+
+.has-x-large-font-size {
+	line-height: var(--wp--custom--typography--line-height--x-large, 1.3);
+}
+
+.has-mega-font-size {
+	line-height: var(--wp--custom--typography--line-height--mega, 1.1);
+}
+
+figcaption {
+	font-size: var(--wp--preset--font-size--small);
+}
+
+figure.alignfull figcaption {
+	margin-left: var(--wp--custom--spacing--block-gap--medium);
+	margin-right: var(--wp--custom--spacing--block-gap--medium);
+}
+
+/* Link. */
+a,
+.wp-block-post-excerpt__more-link {
+	text-decoration-color: currentColor;
+	text-decoration-thickness: .125em;
+	text-underline-offset: 0.1875em;
+
+	&:hover {
+		text-decoration-thickness: .25em;
+		text-underline-offset: 0;
+	}
+
+	&:focus-within {
+		text-decoration-color: currentColor;
+	}
+
+	&:active {
+		text-decoration-color: inherit;
+	}
+}
+
+
+.wp-block-post-title a {
+	text-decoration: none;
+
+	&:hover {
+		text-decoration: underline;
+		text-decoration-color: currentColor;
+		text-decoration-thickness: .25em;
+		text-underline-offset: 0;
+	}
+
+	&:active {
+		text-decoration-color: inherit;
+	}
+}
+
+/* Citation. */
+.wp-block-quote,
+.wp-block-pullquote {
+	cite {
+		position: relative;
+	}
+
+	cite::before {
+		content: '\2014 ';
+	}
+}
+
+/* Formats. */
+mark {
+	background-color: var(--wp--preset--color--highlight);
+	padding-left: 2px;
+	padding-right: 2px;
+}

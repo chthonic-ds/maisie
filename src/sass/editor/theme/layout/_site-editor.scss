@@ -1,0 +1,78 @@
+/* Layout. */
+.wp-site-blocks.is-root-container main { // Required due to .wp-block-post-content wrapper not injected in Site Editor; this serves as its replacement.
+	grid-template-columns: 1fr min(75rem, calc(100% - var(--wp--custom--layout--margin))) 1fr;
+
+	// @todo Experimental: this is an attempt to target child elements with full-width alignment. There is no [data-align="*"] attribute applied in the site editor markup to target.
+	> .has-background[class*=wp-container-] {
+		grid-column: 1 / -1;
+		grid-template-columns: 1fr min(75rem, calc(100% - var(--wp--custom--layout--margin))) 1fr;
+		padding-left: 0 !important;
+		padding-right: 0 !important;
+
+		> * {
+			grid-column: 2;
+		}
+	}
+}
+
+.wp-site-blocks.is-root-container .site-header,
+.wp-site-blocks.is-root-container .site-footer,
+.wp-site-blocks.is-root-container > [class*=wp-container-]:not(main) {
+	grid-template-columns: 1fr min(75rem, 100%) 1fr;
+}
+
+.wp-site-blocks.is-root-container .site-header,
+.wp-site-blocks.is-root-container .site-footer,
+.wp-site-blocks.is-root-container main,
+.wp-site-blocks.is-root-container > [class*=wp-container-] {
+	> * {
+		grid-column: 2;
+	}
+}
+
+/* Rhythm. */
+// @todo Experimental: this is an attempt to target child elements with full-width alignment. There is no [data-align="*"] attribute applied in the site editor markup to target.
+.wp-site-blocks.is-root-container main {
+	[class*=wp-container-] + [class*=wp-container-].has-background,
+	[class*=wp-container-].has-background + [class*=wp-container-] {
+		margin-top: 0 !important;
+	}
+}
+
+/* Typography. */
+.wp-site-blocks.is-root-container {
+	@import '../../../theme/layout/typography';
+}
+
+
+/* General styles for Site Editor view. Quite opinionated, undecided if they'll make the cut. */
+/*.wp-site-blocks.is-root-container {
+	display: revert;
+}
+
+// Templates & template parts: grid layout.
+.is-grid-container,
+.site-header {
+	display: grid;
+	grid-template-columns: 1fr min(var(--wp--custom--layout--content-size), calc(100% - var(--wp--custom--spacing--block-gap--large))) 1fr;
+
+	> * {
+		grid-column: 2;
+	}
+}
+
+header,
+.wp-block-template-part > style + * {
+	margin-top: 0 !important;
+}*/
+
+// Required to prevent elements with fixed line-length from being centred by core inline !important styles.
+.is-root-container [class*="wp-container-"]  > * {
+	margin-left: initial !important;
+	margin-right: initial !important;
+}
+
+.is-root-container,
+.wp-site-blocks  {
+	//@import '../../blocks/post-template/post-template'; // @todo. Required? Fix or drop if not relevant to WP 5.9.
+}

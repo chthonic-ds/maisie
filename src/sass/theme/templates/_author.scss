@@ -1,0 +1,7 @@
+// @hack This allows for the author bio to be positioned separately from other author meta.
+.wp-block-columns--author {
+	.wp-block-post-author__byline,
+	.wp-block-post-author__name {
+		display: none !important;
+	}
+}

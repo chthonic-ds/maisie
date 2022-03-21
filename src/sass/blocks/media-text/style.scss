@@ -1,0 +1,88 @@
+.wp-block-media-text {
+	display: grid;
+	gap: var(--wp--custom--spacing--block-gap--medium);
+	grid-template-columns: repeat(2, 1fr);
+
+	&.has-background {
+		gap: 0;
+		padding: 0 !important;
+	}
+}
+
+.wp-block-media-text__media {
+	height: 100%; // Required to ensure image remains full-height when alignment is present.
+}
+
+.wp-block-media-text__media img {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}
+
+.wp-block-media-text__content {
+	display: flex;
+	flex-direction: column;
+	hyphens: auto;
+	margin-top: 0 !important;
+}
+
+.has-background .wp-block-media-text__content {
+	padding: var(--wp--custom--spacing--block-gap--medium);
+}
+
+.has-media-on-the-right figure {
+	order: 2;
+}
+
+/* ~~~~~ [ Settings ] ~~~~~ */
+
+// Stack on mobile.
+@supports (width: min(320px, 100%)) {
+	.wp-block-media-text.is-stacked-on-mobile {
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	}
+}
+
+/*
+ * Media query required to target blocks with a "media width" value set. This 
+ * inlines a value for grid-template-columns that breaks the auto-fit approach.
+ */
+ @media (max-width: 37.5em) {
+	div[style].wp-block-media-text.is-stacked-on-mobile {
+		//grid-template-columns: 100% !important;
+		grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+	}
+}
+
+// Crop image to available space.
+.wp-block-media-text.is-image-fill .wp-block-media-text__media {
+	background-size: cover;
+	min-height: 100px;
+}
+
+.wp-block-media-text.is-image-fill .wp-block-media-text__media img {
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    width: 1px;
+}
+
+.wp-block-media-text.is-image-fill .wp-block-media-text__media > a {
+    display: block;
+	height: 100%;
+}
+
+/* Alignment. */
+.wp-block-media-text.is-vertically-aligned-top {
+    align-items: start;
+}
+
+.wp-block-media-text.is-vertically-aligned-center {
+    align-items: center;
+}
+
+.wp-block-media-text.is-vertically-aligned-bottom {
+    align-items: end;
+}

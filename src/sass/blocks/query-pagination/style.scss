@@ -1,0 +1,14 @@
+.wp-block-query-pagination {
+	justify-content: space-between;
+}
+
+.wp-block-query-pagination-numbers {
+	display: flex;
+	margin-left: auto !important;
+	margin-right: auto !important;
+
+	> * {
+		margin: 0 !important;
+		padding: 0 1ch;
+	}
+}

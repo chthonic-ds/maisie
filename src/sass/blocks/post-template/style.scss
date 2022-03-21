@@ -1,0 +1,83 @@
+.wp-block-post-template { // @todo Test if still required in archive-type view.
+	margin-left: 0;
+	padding: 0 !important;
+}
+
+.wp-block-post {
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: var(--wp--custom--spacing--block-gap--medium);
+	max-width: 100%;
+	//overflow: hidden; // This was commented out to ensure focus styles appear on card collections; consequences unclear.
+	overflow-wrap: break-word;
+	row-gap: var(--wp--custom--spacing--block-gap--small);
+}
+
+.wp-block-post__media {
+	flex-basis: auto; // Inherit the width set on <figure> via Block Dimensions value. Hardcoding a value here will enforce uniform size but remove ability to be user-set via Editor.
+	flex-grow: 1;
+	max-width: 100%;
+}
+
+.wp-block-post__text {
+	display: block !important;
+	flex-basis: 0;
+	flex-grow: 999;
+	min-width: 55%;
+}
+
+// Fallback for core variation patterns.
+.wp-block-query:not(.wp-block-query--theme-pattern) .wp-block-post {
+	display: initial;
+}
+
+// Do not apply when grid mode is active.
+ul:not(.is-flex-container) {
+	.wp-block-post__text {
+		margin-top: 0 !important;
+	}
+}
+
+.wp-block-query > .wp-block-post-template {
+	display: grid;
+	gap: var(--wp--custom--spacing--block-gap--medium);
+
+	// object-fit causes issues with grid & flex.
+	&.is-flex-container .wp-block-post {
+		display: block;
+	}
+
+	// Grid layout variation via Query block toolbar. Automatically manages column width, does not listen to user-set value.
+
+	&.is-flex-container .wp-block-post__text {
+		margin-top: var(--wp--custom--spacing--block-gap--small);
+	}
+
+	@supports (width: min(320px, 100%)) {
+		&.is-flex-container {
+			// The .is-flex-container class is applied by the editor when a query is set to "Grid view" presentation. !important is required here to avoid inheriting default gap values for .is-flex-container.
+			gap: var(--wp--custom--spacing--block-gap--medium) !important;
+			grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr)) !important;
+		}
+	}
+}
+
+/* Pattern: Cards. */
+.wp-block-query .box {
+	height: 100%; // Grid layout.
+	width: 100%;  // List layout.
+}
+
+.box .wp-block-post__media {
+	flex-grow: unset;
+}
+
+.wp-block-query .box__foot {
+	margin-top: auto;
+}
+
+// @todo Test if still required in archive-type view.
+// Ensure large gap only applied to query markup in main area.
+:where(.blog,.archive) .wp-block-query > .wp-block-post-template {
+	gap: var(--wp--custom--spacing--block-gap--medium);
+}

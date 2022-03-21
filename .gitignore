@@ -1,0 +1,6 @@
+# build system
+node_modules/
+/vendor/
+
+# folders
+dist/*

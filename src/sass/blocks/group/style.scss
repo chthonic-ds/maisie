@@ -1,0 +1,23 @@
+/* ~~~~~ [ Custom styles ] ~~~~~ */
+
+// Increase top & bottom padding.
+.is-style-has-padding-y-medium {
+	padding-bottom: var(--wp--custom--spacing--block-gap--medium) !important;
+	padding-top: var(--wp--custom--spacing--block-gap--medium) !important;
+}
+
+.is-style-has-padding-y-large {
+	padding-bottom: var(--wp--custom--spacing--block-gap--large) !important;
+	padding-top: var(--wp--custom--spacing--block-gap--large) !important;
+}
+
+// Flow children across columns.
+.is-style-has-children-flow-across-2-columns {
+	-webkit-columns: 2 28ch;
+	   -moz-columns: 2 28ch;
+	        columns: 2 28ch;
+	display: block !important; // Always override default grid layout.
+   -webkit-column-gap: var(--wp--custom--spacing--block-gap--medium);
+      -moz-column-gap: var(--wp--custom--spacing--block-gap--medium);
+           column-gap: var(--wp--custom--spacing--block-gap--medium);
+}

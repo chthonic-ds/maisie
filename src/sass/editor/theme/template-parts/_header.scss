@@ -1,0 +1,7 @@
+.site-header {
+	padding: var(--wp--custom--spacing--block-gap--small) 0;
+
+	> * {
+		margin-bottom: 0 !important; // Override for rhythm inner child rule.
+	}
+}

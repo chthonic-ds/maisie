@@ -1,0 +1,6 @@
+@import 'blocks/style';
+@import 'theme/style';
+
+@import 'alignment'; // duplicate of utility > alignment.
+@import 'fx';        // duplicate of utility > fx.
+@import 'override';  // duplicate of utility > override.

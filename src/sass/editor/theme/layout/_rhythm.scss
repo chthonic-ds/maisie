@@ -1,0 +1,113 @@
+.is-root-container * {
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+// Default vertical spacing.
+.is-root-container * + * {
+	margin-top: var(--wp--custom--spacing--block-gap--small);
+}
+
+.is-root-container {
+	// Increased specificity required here.
+	&.block-editor-block-list__layout > * + h2,
+	&.block-editor-block-list__layout > * + h3,
+
+	// Blocks.
+	.wp-block-columns,
+	.wp-block-columns + *:not([data-align="full"]):not(h2):not(h3),
+	.wp-block-buttons,
+	.wp-block-gallery,
+	.wp-block-gallery + *,
+	.wp-block-image,
+	.wp-block-image + *,
+	.wp-block-embed,
+	.wp-block-embed + *,
+	.wp-block-media-text,
+	.wp-block-media-text + *,
+	.wp-block-separator,
+	.wp-block-separator + *,
+	.wp-block-pullquote,
+	.wp-block-pullquote + *,
+	* + *.has-background,  // @todo. Will need another look. These two rules target alignment presuming a group is the child of .wp-block.
+	*.has-background + *,
+	*.has-background + [data-align="full"],
+	* + [data-align="full"],
+	[data-align="full"] + *,
+	.maisie-layout-grid,
+	.maisie-layout-grid + * {
+		margin-top: var(--wp--custom--spacing--block-gap--medium);
+	}
+
+	// All container elements are "pass-through".
+	> *:first-child,
+	.wp-block-post-template > *,
+
+	.has-background > *:first-child:not(.box__body),
+	// These [data-align] selectors: see https://github.com/WordPress/gutenberg/issues/33142.
+	// [data-align="full"], // Disabled when unable to target gallery with full-width alignment; @todo implement JS solution to add helpful class to [data] div.
+	[data-align="full"] + [data-align="full"], // Solves gap between these element with background-color set; work-around via editor is to manually add a spacer block.
+	[data-align="full"] > .wp-block-gallery, // Required due to above disabled rule.
+	[data-align="full"] > .wp-block-image,   // Required due to above disabled rule.
+	[data-align="full"] > .wp-block-embed,   // Required due to above disabled rule.
+	//* + [data-align="full"] > .has-background,
+	[data-align="full"] > .has-background > *:first-child,
+
+	// Blocks.
+	.wp-block-column,
+	.wp-block-column > *:first-child,
+	.wp-block-button, // A button has buttons wrapper.
+	.wp-block-list li,
+	.wp-block-quote :first-child,
+	.wp-block-cover .wp-block-cover__inner-container,
+	.wp-block-cover__gradient-background,
+	.wp-block-cover__inner-container > *:first-child,
+	.wp-block-embed > .wp-block-embed,
+	.blocks-gallery-item,
+	* + .wp-block-spacer,
+	.wp-block-spacer + *,
+
+	// A navigation link has a nav wrapper.
+	.wp-block-navigation-link,
+	.wp-block-navigation-link__container,
+
+	// Prevent editor helpers assuming vertical rhythm.
+	[class^="components-"],
+	.components-resizable-box__container img + div, // Resizer handle container.
+	.block-editor-media-placeholder__url-input-container,
+	.block-editor-block-list__layout .block-list-appender,
+	.block-editor-button-block-appender svg {
+		margin-top: 0;
+	}
+
+	/* Template parts */
+	// Header.
+	.site-header * + *, // Override for Gutenberg blockGap. Should no longer be required once theme.json preference lands.
+	.site-header > :first-child,
+	.site-header__default > :first-child,
+	.site-header > :last-child,
+	.site-header__default > :last-child {
+		margin-bottom: 0 !important;
+		margin-top: 0 !important;
+	}
+
+	main,
+	/*
+		@todo Experimental, needs to be stress-tested.
+		May mean other more specific rules can be removed.
+		Originally introduced to handle column.has-background with child group.has-background.	
+	*/
+	.has-background > .has-background > :first-child {
+		margin-top: 0 !important;
+	}
+
+	.has-background > .has-background > :last-child {
+		margin-bottom: 0 !important;
+	}
+
+	/* Manage column top margins for first Columns block in Group block. */
+	.wp-block-group .wp-block-columns:first-child .wp-block-column:first-child {
+		margin-bottom: 0 !important;
+		margin-top: 0 !important;
+	}
+}

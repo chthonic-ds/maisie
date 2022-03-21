@@ -1,0 +1,49 @@
+.wp-block-navigation {
+	max-width: 100% !important;
+}
+
+.wp-block-navigation__container {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+}
+
+// Required for justification: space-between to work correctly.
+.wp-block-navigation__responsive-container {
+	width: 100%;
+}
+
+// Core variation: horizontal navigation links cluster.
+.wp-block-navigation:not(.is-vertical) {
+	.wp-block-navigation__container {
+		flex-direction: row;
+		column-gap: var(--wp--custom--spacing--block-gap--small, 1.5rem);
+	}
+}
+
+// Core variation: vertical navigation links cluster.
+.wp-block-navigation.is-vertical .wp-block-navigation__responsive-container-content,
+.wp-block-navigation.is-vertical .wp-block-navigation__container {
+	flex-direction: var(--navigation-layout-direction);
+}
+
+// Overlay: manage overall display.
+.wp-block-navigation__responsive-container.is-menu-open {
+	box-sizing: border-box;
+	padding: var(--wp--custom--spacing--block-gap--small);
+}
+
+// Overlay: match element gap to theme.
+.wp-block-navigation__responsive-container.is-menu-open .wp-block-navigation__responsive-container-content .wp-block-navigation__container {
+	gap: calc(.5 * var(--wp--custom--spacing--block-gap--small))
+}
+
+// Submenu: manage padding.
+.wp-block-navigation__submenu-container .wp-block-navigation-item.has-background {
+	padding: 0 !important;
+
+	.wp-block-navigation-item__content {
+		padding: 0 !important;
+	}
+}

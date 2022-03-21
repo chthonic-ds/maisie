@@ -1,0 +1,113 @@
+/* State. */
+[data-element="burger-menu"][enabled="false"] button[modal-trigger] {
+	display: none;
+}
+
+[data-element="burger-menu"][enabled="true"] {
+	min-height: var(--wp--custom--navigation--burger--diameter);
+
+	button {
+		z-index: 3;
+	}
+
+	[aria-expanded="false"] + [aria-hidden="true"] {
+		height: 0;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	[aria-expanded="true"] + [aria-hidden="false"] {
+		height: auto;
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+[data-element="burger-menu"][enabled="false"] .wp-block-navigation__responsive-container-content > * {
+	margin: 0;
+}
+
+[data-element="burger-menu"][enabled="true"] {
+	/* Burger toggle. */
+	.wp-block-navigation__responsive-container-open {
+		align-items: center;
+		background-color: var(--wp--custom--navigation--burger--color);
+		background-position: center center;
+		background-repeat: no-repeat;
+		border: 0;
+		border-radius: 50%;
+		display: flex;
+		height: var(--wp--custom--navigation--burger--diameter);
+		justify-content: center;
+		position: fixed;
+		right: var(--wp--custom--spacing--block-gap--small);
+		top: var(--wp--custom--spacing--block-gap--medium);
+		width: var(--wp--custom--navigation--burger--diameter);
+
+		&:hover,
+		&:focus {
+			cursor: pointer;
+		}
+	}
+
+	// Icon: Open.
+	[aria-expanded="false"] {
+		background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='24' height='24' fill='%23fff' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' role='img' aria-hidden='true' focusable='false'%3E%3Crect x='4' y='7.5' width='16' height='1.5'%3E%3C/rect%3E%3Crect x='4' y='15' width='16' height='1.5'%3E%3C/rect%3E%3C/svg%3E");
+	}
+
+	// Icon: Close.
+	[aria-expanded="true"] {
+		background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' fill='%23fff' role='img' aria-hidden='true' focusable='false'%3E%3Cpath d='M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z'%3E%3C/path%3E%3C/svg%3E");
+	}
+
+	/* Burger drawer. */
+	.wp-block-navigation__responsive-container {
+		align-items: center;
+		background-color: var(--wp--custom--navigation--overlay--background-color); // Serves as default if no sub-menu present; else, sub-menu background colour used (per Core approach).
+		display: flex;
+		height: 100% !important;
+		justify-content: var(--navigation-layout-justify, initial); // @todo. Add remaining defaults to this selector.
+		left: 0;
+		overflow: auto;
+		padding: var(--wp--custom--spacing--block-gap--small);
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 2;
+	}
+
+	.wp-block-navigation__responsive-container-content {
+		.wp-block-navigation__container {
+			align-items: var(--navigation-layout-justification-setting, inherit);
+			text-align: var(--navigation-text-align, inherit);
+		}
+
+		.wp-block-navigation-item {
+			background-color: transparent !important;
+			color: initial !important;
+		}
+
+	   .has-child {
+		   flex-direction: column;
+
+		   > a {
+			   font-weight: 600;
+		   }
+	   }
+   }
+
+   .wp-block-navigation__container {
+	   flex-direction: column;
+	   gap: calc(.5 * var(--wp--custom--spacing--block-gap--small));
+   }
+}
+
+/* Match position if wrapper padding preset used, medium is default value. This presumes a lot. */
+header > .is-style-has-padding-y-small [data-element="burger-menu"][enabled="true"] .wp-block-navigation__responsive-container-open {
+	top: var(--wp--custom--spacing--block-gap--small);
+}
+
+// Only affect the closed burger for the "large" wrapper preset.
+header > .is-style-has-padding-y-large [data-element="burger-menu"][enabled="true"] .wp-block-navigation__responsive-container-open[aria-expanded="false"] {
+	top: var(--wp--custom--spacing--block-gap--large);
+}

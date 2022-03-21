@@ -1,0 +1,45 @@
+.is-grid-container,
+.wp-block-post-content,
+.wp-block-cover,
+// The semi-duplication below is necessary.
+.wp-block-group,
+.wp-block-group.alignfull {
+	display: grid;
+}
+
+.is-grid-container,
+.wp-block-post-content,
+.alignfull {
+	grid-template-columns:
+	  1fr calc(100% - var(--wp--custom--layout--margin)) 1fr;
+}
+
+.wp-block-post-content--narrow {
+	grid-template-columns: 1fr min(var(--wp--custom--layout--narrow-size), calc(100% - var(--wp--custom--layout--margin))) 1fr;
+}
+
+.is-grid-container > *,
+.wp-block-post-content > * {
+	grid-column: 2;
+}
+
+/* Alignment. */
+.alignfull {
+	grid-column: 1 / -1 !important;
+	max-width: none !important;
+}
+
+.alignfull:not(.wp-block-columns) > * {
+	grid-column: 2;
+}
+
+// Disable grid.
+main.wp-block-group {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	> * {
+		width: 100%;
+	}
+}

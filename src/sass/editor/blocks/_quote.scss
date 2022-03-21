@@ -1,0 +1,9 @@
+@import '../../blocks/quote/style';
+
+.wp-block-quote {
+	p,
+	cite {
+		font-style: normal;
+		text-align: left;
+	}
+}

@@ -1,0 +1,145 @@
+// Apply these styles if burger menu is not active.
+[data-element="burger-menu"][enabled="false"] {
+	.has-child {
+		position: relative;
+	}
+
+	.wp-block-navigation__submenu-container {
+		left: calc(-1 * var(--wp--custom--spacing--block-gap--small));
+		margin: 0 !important;
+		opacity: 0;
+		padding-top: var(--wp--custom--spacing--block-gap--small);
+		position: absolute;
+		top: 100%;
+		transform: translateY(var(--wp--custom--spacing--block-gap--small));
+		transition: 250ms;
+		visibility: hidden;
+		width: auto;
+		z-index: 2;
+
+		// Triangle device.
+		&::before {
+			border-color: transparent transparent var(--wp--custom--navigation--submenu--arrow-color, var(--wp--preset--color--white)) transparent;
+			border-style: solid;
+			border-width: 0 8px 12px 8px;
+			content: '';
+			height: 0;
+			left: var(--wp--custom--spacing--block-gap--small);
+			position: absolute;
+			top: calc(var(--wp--custom--spacing--block-gap--small) - 12px); /* Height of triangle subtracted from small (custom) blockGap, the height of the parent gradient's top padding. */
+			width: 0;
+		}
+	}
+
+	.wp-block-navigation__submenu-container .wp-block-navigation-item {
+		padding: 0 var(--wp--custom--spacing--block-gap--small);
+	
+		&:first-child {
+			padding-top: 1em;
+		}
+	
+		&:last-child {
+			padding-bottom: 1em;
+		}
+	}
+
+	.open-on-hover-click {
+		align-items: center;
+	}
+}
+
+// Open sub-menu elements to left if menu aligned right.
+[data-element="burger-menu"][enabled="false"] {
+	.has-reverse-direction {
+		left: auto;
+		right: calc(-1 * var(--wp--custom--spacing--block-gap--small));
+
+		&::before {
+			left: auto;
+			right: var(--wp--custom--spacing--block-gap--small);
+		}
+	}
+}
+
+/* Settings. */
+
+// Label & icon.
+.open-on-hover-click,
+.open-on-click .wp-block-navigation-submenu__toggle {
+	column-gap: .25em; // Manages space between label and icon.
+	display: flex;
+	padding: 0;
+}
+
+// Button.
+.wp-block-navigation-submenu__toggle {
+	background-color: inherit;
+	border: 0;
+	color: inherit;
+	padding: 0;
+}
+
+// Icon.
+.wp-block-navigation__submenu-icon {
+	color: inherit !important; // Required to allow SVG icon to inherit via currentColor.
+	margin: 0 !important;
+	width: .5em;
+
+	svg {
+		height: inherit;
+		stroke: currentColor;
+		width: inherit;
+	}
+}
+
+// Open submenu.
+.has-child:not(.open-on-click):hover .wp-block-navigation__submenu-container, // Open on hover, icon and no icon.
+.wp-block-navigation-submenu__toggle[aria-expanded="true"] + .wp-block-navigation__submenu-container { // Open on click, icon.
+	opacity: 1;
+	transform: translateY(0);
+	visibility: visible;
+}
+
+// Open on click: ensure button receives pointer event.
+.open-on-click .wp-block-navigation-submenu__toggle * {
+	pointer-events: none;
+}
+
+// Burger overlay.
+[data-element="burger-menu"][enabled="true"] {
+	.wp-block-navigation__submenu-container {
+		margin: 0;
+	}
+
+	// Do not display sub-menu button when overlay is active.
+	.wp-block-navigation-submenu__toggle {
+		display: none;
+	}
+
+	// Show sub-menu button when set to "Open on click" is true.
+	.open-on-click .wp-block-navigation-submenu__toggle {
+		background: none;
+		display: block;
+		text-align: left;
+
+		.wp-block-navigation-item__label {
+			color: initial;
+			font-weight: 600;
+		}
+
+		.wp-block-navigation__submenu-icon {
+			display: none !important;
+		}
+	}
+}
+
+/* Defaults. */
+// Colour.
+.wp-block-navigation__submenu-container .wp-block-navigation-item {
+	// Set defaults if no palette selections made.
+	color: var(--wp--preset--color--grey-dark);
+	background-color: var(--wp--preset--color--white);
+
+	// Fix for Chromium browsers: prevents render artifact during transition.
+	backface-visibility:hidden;
+}

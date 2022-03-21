@@ -1,0 +1,52 @@
+@import '../../blocks/post-template/style';
+
+// Overrides for site editor context.
+.edit-site-block-editor__block-list main,
+.wp-block-post-template .is-root-container { // Unclear why this selector is present when block is unselected.
+//	display: revert;
+}
+
+// The front-end approach cannot be replicated here due to the Query block parent wrapper including other children.
+.edit-site-block-editor__block-list main {
+	margin-top: 0;
+	//padding: 0 var(--wp--custom--spacing--block-gap--small); // Aligns to header.
+	padding: 0;
+}
+
+.wp-block-post-template li {
+	max-width: 100% !important;
+	width: 100% !important;
+/*
+	> * {
+		min-width: 100%;
+	}*/
+}
+
+// List format.
+.wp-block-query.wp-block-query--theme-pattern .wp-block-post-template:not(.is-flex-container) {
+	li.block-editor-block-list__layout,
+	li.block-editor-block-preview__live-content {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: var(--wp--custom--spacing--block-gap--medium);
+		max-width: 100%;
+		overflow: hidden;
+		overflow-wrap: break-word;
+		row-gap: var(--wp--custom--spacing--block-gap--small);
+	}
+}
+
+// @todo. Unclear what of below is still relevant.
+.wp-block-post-template li *:first-child {
+	margin-top: 0;
+}
+
+.wp-block-post-author__byline {
+	display: inline;
+	font-size: inherit;
+	width: auto;
+}
+
+.wp-block-post-author .wp-block-post-author__name {
+	font-weight: 400;
+}

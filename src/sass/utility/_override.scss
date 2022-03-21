@@ -1,0 +1,30 @@
+// Margin.
+.has-no-margin-top {
+	margin-top: 0 !important;
+}
+
+// Grid.
+.has-no-grid {
+	display: block !important;
+}
+
+.is-full-width-child {
+	grid-column: 1 / -1 !important;
+}
+
+// Row gap.
+.has-no-row-gap {
+	row-gap: 0 !important;
+}
+
+.has-small-row-gap {
+	row-gap: var(--wp--custom--spacing--block-gap--small);
+}
+
+.has-medium-row-gap {
+	row-gap: var(--wp--custom--spacing--block-gap--medium);
+}
+
+.has-large-row-gap {
+	row-gap: var(--wp--custom--spacing--block-gap--large);
+}

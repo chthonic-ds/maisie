@@ -1,0 +1,129 @@
+.box {
+	* {
+		color: inherit;
+	}
+}
+
+/* Structure. */
+.box,
+.box__head,
+.box__body,
+.box__foot {
+	display: flex;
+	flex-direction: column;
+}
+
+.box,
+.box--unpadded .box__body,
+.box--unpadded .box__foot {
+	padding: 0;
+}
+
+.box__head,
+.box__body,
+.box__foot,
+.box--unpadded.has-background {
+	padding: var(--wp--custom--spacing--block-gap--small);
+}
+
+.box > *,
+.box__foot > *:first-child,
+.box .has-background + * {
+	margin: 0;
+}
+
+// The unpadded card receives no padding so vertical margins are applied to match padded card spacing.
+.box--unpadded {
+	row-gap: var(--wp--custom--spacing--block-gap--small);
+}
+
+.box--unpadded .box__body {
+	margin-top: var(--wp--custom--spacing--block-gap--small);
+}
+
+.box--unpadded .box__foot {
+	margin-top: var(--wp--custom--spacing--block-gap--small);
+}
+
+/* Elements. */
+/*.box:not(.box--text-only) {
+	overflow: hidden;
+}*/
+
+.box--title-first .box-title + * {
+	margin-top: 0;
+}
+
+// Visually display the image first, if present, unless variation is "title first".
+.box:not(.box--title-first ) .box__media {
+	order: -1;
+}
+
+.box figure {
+	display: grid;
+
+	img {
+		grid-area: 1 / 1 / 2 / 3;
+		width: 100%;
+	}
+
+	figcaption {
+		color: var(--wp--preset--color--white);
+		font-size: var(--wp--preset--font-size--tiny);
+		line-height: 1.3;
+		grid-area: 1 / 1 / 2 / 2;
+		margin: 0;
+		max-height: 20ch; // Prevents overflow of container. @todo Look at grid-based solution.
+		padding: calc(.5 * var(--wp--custom--spacing--block-gap--small));
+		text-orientation: sideways;
+		writing-mode: vertical-rl;
+	}
+}
+
+/* Make entire text-only card into a clickable element when a link is added on the title. */
+.wp-site-blocks .box:not(.box--not-linkable) {
+	position: relative;
+
+	.box-title a::after {
+		bottom: 0;
+		content: '';
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+
+	// Interaction.
+	.box-title a {
+		outline: none;
+		text-decoration: none;
+	}
+
+	.box-title a:hover,
+	.box-title a:focus {
+		text-decoration: underline;
+	}
+
+	// For cards: hover style is different to focus style.
+	.box-title a:hover::after {
+		outline: .1875rem solid var(--wp--preset--color--grey-dark);
+		outline-offset: calc(.375 * var(--wp--custom--spacing--block-gap--small));
+	}
+}
+
+/* ~~~~~ [ Custom styles ] ~~~~~ */
+
+// Make cards match height of columns in row.
+.is-style-columns-has-full-height-cards {
+	.wp-block-column > * {
+		height: 100%;
+	}
+
+	.box--unpadded .box__body {
+		margin-bottom: calc(2 * var(--wp--custom--spacing--block-gap--small));
+	}
+
+	.box__foot {
+		margin-top: auto;
+	}
+}

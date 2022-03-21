@@ -1,0 +1,97 @@
+.wp-block-navigation {
+	--navigation-layout-justification-setting: flex-start;
+	--navigation-layout-direction: row;
+	--navigation-layout-wrap: wrap;
+	--navigation-layout-justify: flex-start;
+	--navigation-layout-align: center;
+	margin: 0 !important; // @todo. Try removing !important.
+	max-width: 100% !important; // Overrides font size-related classes managing line lengths.
+
+	&.is-vertical {
+		--navigation-layout-direction: column;
+		--navigation-layout-justify: initial;
+		--navigation-layout-align: flex-start;
+	}
+
+	&:where(.has-background) [data-element="burger-menu"][enabled="false"] .wp-block-navigation__container {
+		// @todo. Ensure only applied to expanded view, not overlay.
+		padding: calc(.5 * var(--wp--custom--spacing--block-gap--small, 1.5rem));
+	}
+}
+
+.wp-block-navigation ul {
+	list-style-type: none;
+}
+
+.wp-block-navigation__container,
+.wp-block-page-list {
+	column-gap: var(--wp--custom--spacing--block-gap--small, 1.5rem);
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	margin: 0 !important;
+	padding: 0;
+}
+
+// Orientation.
+.wp-block-navigation.is-vertical .wp-block-navigation__responsive-container-content,
+.wp-block-navigation.is-vertical .wp-block-navigation__container {
+	flex-direction: var(--navigation-layout-direction);
+}
+
+.wp-block-navigation.is-vertical .wp-block-navigation__responsive-container-content {
+	row-gap: calc(.5 * var(--wp--custom--spacing--block-gap--small, 1.5rem));
+}
+
+// Apply these styles if burger menu is not active.
+// @todo. Move to burger stylesheet? Only required if burger is enabled.
+[data-element="burger-menu"][enabled="false"] {
+	.wp-block-navigation__responsive-container {
+		// This prevents burger drawer colour & background colour seeping into the expanded navigation view.
+		background-color: inherit !important;
+		color: inherit !important;
+		padding: 0 !important;
+	}
+
+	.wp-block-navigation__responsive-container-content {
+		column-gap: var(--wp--custom--spacing--block-gap--small, 1.5rem);
+		display: flex;
+	}
+
+	.wp-block-navigation-item__label {
+		white-space: nowrap; // Force the menu item label to remain on a single line.
+	}
+}
+
+.wp-block-navigation-item__content {
+	display: inline-block;
+	width: 100%;
+}
+
+// Alignment.
+// Sets a sensible default; currently not an editor-driven option.
+.wp-block-navigation__responsive-container-content {
+	align-items: center;
+}
+
+// Justification.
+.wp-block-navigation.items-justified-center {
+	--navigation-layout-justification-setting: center;
+	--navigation-layout-justify: center;
+	--navigation-text-align: center;
+}
+.wp-block-navigation.items-justified-center.is-vertical {
+	--navigation-layout-align: center;
+}
+.wp-block-navigation.items-justified-right {
+	--navigation-layout-justification-setting: flex-end;
+	--navigation-layout-justify: flex-end;
+	--navigation-text-align: right;
+}
+.wp-block-navigation.items-justified-right.is-vertical {
+	--navigation-layout-align: flex-end;
+}
+.wp-block-navigation.items-justified-space-between {
+	--navigation-layout-justification-setting: space-between;
+	--navigation-layout-justify: space-between;
+}

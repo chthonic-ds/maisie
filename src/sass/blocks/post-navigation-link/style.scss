@@ -1,0 +1,16 @@
+.wp-block-post-navigation-link {
+	display: flex;
+	flex-direction: column;
+
+	a {
+		margin-top: 0;
+	}
+}
+
+.post-navigation-link__label {
+	text-transform: uppercase;
+	letter-spacing: .04375em;
+	font-size: var(--wp--preset--font-size--tiny);
+	letter-spacing: 0.06125em;
+	line-height: var(--wp--custom--typography--line-height--tiny);
+}

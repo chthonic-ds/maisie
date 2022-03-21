@@ -1,0 +1,7 @@
+@import 'author';
+@import 'sidebar';
+
+// @todo. Test and find a home for this.
+.wp-block-post-content--narrow > * {
+	max-width: 100% !important;
+}

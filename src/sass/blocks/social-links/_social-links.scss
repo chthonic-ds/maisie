@@ -1,0 +1,3 @@
+.wp-block-social-links {
+	gap: calc(.5 * var(--wp--custom--spacing--block-gap--small, calc(.5 * clamp(1.27rem, 1.03rem + 0.63vw, 1.50rem)))) !important; // Overrides the default row gap in core global styles.
+}

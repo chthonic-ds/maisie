@@ -1,0 +1,16 @@
+@import '../../blocks/categories/style';
+
+.is-root-container {
+	.wp-block-categories__list {
+		padding-left: 0;
+
+		li {
+			margin-top: 0;
+		}
+
+		ul {
+			margin-top: 0;
+			margin-left: 1.125em;
+		}
+	}
+}

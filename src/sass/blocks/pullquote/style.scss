@@ -1,0 +1,21 @@
+.wp-block-pullquote {
+	border-color: var(--wp--preset--color--grey-dark);
+	border-style: solid;
+	border-width: .25rem 0;
+	padding-bottom: var(--wp--custom--spacing--block-gap--small);
+	padding-top: var(--wp--custom--spacing--block-gap--small);
+	width: 100%; // Ensure borders run full-width when text is aligned.
+
+	cite {
+		display: inline-block;
+		font-size: var(--wp--preset--font-size--small);
+		font-style: normal;
+		line-height: var(--wp--custom--typography--line-height--small);
+	}
+}
+
+.wp-block-pullquote.alignfull {
+	margin-left: var(--wp--custom--spacing--block-gap--medium);
+	margin-right: var(--wp--custom--spacing--block-gap--medium);
+	max-width: calc(100% - var(--wp--custom--spacing--block-gap--large));
+}

@@ -1,0 +1,9 @@
+@import '../../blocks/pullquote/style';
+
+.wp-block-pullquote {
+	text-align: unset; // Override core style.
+
+	blockquote {
+		margin: 0; // Override core style.
+	}
+}

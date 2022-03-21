@@ -1,0 +1,28 @@
+// @todo. Decision required on whether floats will be supported.
+.wp-block-image figure {
+	display: flex;
+	flex-direction: column;
+
+	&.alignleft {
+		align-items: flex-start;
+	}
+
+	&.aligncenter {
+		align-items: center;
+	}
+
+	&.alignright {
+		align-items: flex-end;
+	}
+
+	img {
+		display: inline-block;
+	}
+}
+
+// Match image to full-width container.
+.wp-block-image.alignfull {
+	img {
+		width: 100%;
+	}
+}

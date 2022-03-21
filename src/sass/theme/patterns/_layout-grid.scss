@@ -1,0 +1,19 @@
+.maisie-layout-grid {
+	align-items: start;
+	display: grid;
+	gap: var(--wp--custom--spacing--block-gap--medium) !important; // @todo. !important added to ensure Cards pattern gap is inherited; look at reducing specificity elsewhere.
+
+	> * {
+		margin-top: 0 !important;
+	}
+}
+
+@supports (width: min(350px, 100%)) {
+.maisie-layout-grid__2-columns {
+	grid-template-columns: repeat(auto-fit, minmax(min(calc((var(--wp--custom--layout--content-size) / 2) - (4 * var(--wp--custom--spacing--block-gap--medium))), 100%), 1fr));
+}
+
+.maisie-layout-grid__3-columns {
+		grid-template-columns: repeat(auto-fit, minmax(min(calc((var(--wp--custom--layout--content-size) / 3) - (2 * var(--wp--custom--spacing--block-gap--medium))), 100%), 1fr));
+	}
+}

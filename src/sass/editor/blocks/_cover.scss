@@ -1,0 +1,9 @@
+.wp-block-cover {
+	max-width: 100%; // Prevents overflow if user sets minimum height value (will conflict with aspect-ratio value).
+	padding: 0 !important;
+}
+
+.wp-block-cover .wp-block-cover__inner-container {
+	padding: var(--wp--custom--spacing--block-gap--medium) !important; // @todo This needs to be matched to front-end, currently mismatched.
+	width: auto; // @todo Test if still required.
+}

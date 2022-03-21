@@ -1,0 +1,61 @@
+.blocks-gallery-grid {
+	display: grid;
+	gap: var(--wp--custom--spacing--block-gap--small);
+	margin: 0 !important;
+}
+
+.blocks-gallery-item {
+	min-width: 100%; // Ensures gallery element always fills available space.
+}
+
+// Column count.
+@supports (width: min(350px, 100%)) {
+	.wp-block-gallery {
+		&.columns-1 .blocks-gallery-grid {
+			grid-template-columns: repeat(1, 1fr);
+		}
+
+		&.columns-2 .blocks-gallery-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+
+		&.columns-3 .blocks-gallery-grid {
+			grid-template-columns: repeat(3, 1fr);
+			// Possible solution for responsive gallery, requires var for post-content width (e.g. contentSize; 54ch for single template).
+			//grid-template-columns: repeat(auto-fit, minmax(min(calc(18ch - var(--wp--custom--spacing--block-gap--small)), 100%), 1fr));
+		}
+
+		&.columns-4 .blocks-gallery-grid {
+			grid-template-columns: repeat(4, 1fr);
+		}
+	}
+}
+
+// Captions.
+.blocks-gallery-item figure {
+	display: grid;
+
+	img {
+		grid-area: 1 / 1 / 3 / 2;
+	}
+
+	figcaption {
+		background-color: rgba(255,255,255,.5);
+		grid-area: 2 / 1 / 2 / 2;
+		padding: calc(.25 * var(--wp--custom--spacing--block-gap--small));
+		text-align: center;
+	}
+}
+
+
+/* ~~~~~ [ Settings ] ~~~~~ */
+
+// Crop images to a uniform size (by row).
+.wp-block-gallery.is-cropped figure,
+.wp-block-gallery.is-cropped img {
+	height: 100%;
+}
+
+.wp-block-gallery.is-cropped img {
+    object-fit: cover;
+}

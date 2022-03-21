@@ -1,0 +1,7 @@
+@import '../../../theme/patterns/layout-grid';
+
+.maisie-layout-grid {
+	> * {
+		margin-top: 0 !important;
+	}
+}

@@ -1,0 +1,15 @@
+@import '../../blocks/group/style';
+
+.wp-block-group {
+	display: grid;
+}
+
+div[data-align] > .wp-block-group {
+	display: grid;
+	grid-template-columns: 1fr min(var(--wp--custom--layout--content-size), calc(100% - var(--wp--custom--layout--margin))) 1fr;
+	column-gap: var(--wp--custom--spacing--block-gap--small);
+}
+
+div[data-align] > .wp-block-group > * {
+	grid-column: 2;
+}

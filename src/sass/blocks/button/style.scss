@@ -1,0 +1,56 @@
+// Allows default font-size value — when provided by global styles — to be overriden via block settings.
+.has-custom-font-size .wp-block-button__link {
+    font-size: inherit;
+}
+
+// Default.
+.wp-block-button__link {
+	box-shadow: inset 0 0 0 0 currentColor;
+	display: inline-block;
+	letter-spacing:0.06125em;
+	text-decoration: none;
+	text-transform:uppercase;
+	transition: box-shadow 150ms cubic-bezier(.39,.575,.565,1);
+
+	&:hover {
+		box-shadow: inset 0 0 0 .1875rem currentColor;
+	}
+
+	&:focus {
+		box-shadow: inset 0 0 0 .1875rem var(--wp--preset--color--highlight);
+	}
+}
+
+// User-selected colour.
+$colours: (
+	'primary': var(--wp--preset--color--primary),
+	'secondary': var(--wp--preset--color--secondary),
+	'black' : var(--wp--preset--color--grey-dark),
+	'white': var(--wp--preset--color--white),
+);
+
+@each $preset, $colour in $colours {
+	.wp-block-button__link.has-#{$preset}-color:hover,
+	.wp-block-button__link.has-#{$preset}-color:focus {
+		color: $colour;
+	}
+}
+
+/* ~~~~~ [ Custom styles ] ~~~~~ */
+
+/* Outline (WP core) */
+
+// Default.
+.is-style-outline {
+	> .wp-block-button__link {
+		box-shadow: inset 0 0 0 .1875rem currentColor;
+
+	   &:hover {
+		   box-shadow: inset 0 0 0 .0625rem currentColor;
+	   }
+
+	   &:focus {
+			box-shadow: inset 0 0 0 .1875rem var(--wp--preset--color--highlight);
+		}
+   }
+}

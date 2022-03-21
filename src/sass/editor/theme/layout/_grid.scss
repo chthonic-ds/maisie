@@ -1,0 +1,30 @@
+// .editor-styles-wrapper automatically namespaced.
+
+/* Match front-end grid layout. */
+.edit-post-visual-editor__post-title-wrapper,
+.edit-post-visual-editor__post-title-wrapper + .is-root-container {
+	display: grid;
+	grid-template-columns: 1fr min(var(--wp--custom--layout--content-size), calc(100% - var(--wp--custom--layout--margin))) 1fr;
+	column-gap: var(--wp--custom--spacing--block-gap--small);
+}
+
+.edit-post-visual-editor__post-title-wrapper > *,
+.is-root-container > * { // Previous sibling to target correct .is-root-container left off intentionally; will break alignments.
+	grid-column: 2;
+}
+
+div[data-align] {
+	grid-column: 1 / -1;
+	width: 100%;
+}
+
+// Prevent child being centred.
+.edit-post-visual-editor__post-title-wrapper > *,
+.edit-post-visual-editor__post-title-wrapper + .is-root-container > * {
+	min-width: 100%;
+}
+
+// Really prevent child being centred.
+.edit-post-visual-editor__post-title-wrapper + .is-root-container > .block-editor-rich-text__editable {
+	min-width: auto !important;
+}

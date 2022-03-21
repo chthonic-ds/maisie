@@ -1,0 +1,117 @@
+/**
+ * WordPress screen reader selector.
+ * These properties are taken from tailwind: https://tailwindcss.com/docs/screen-readers
+ */
+.screen-reader-text {
+	border-width: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+/**
+ * Focus styles
+ *
+ * Uses :focus-visible with fallback for unsupported browsers. Though there's 
+ * "modern browser" suppport for :focus-visible, approach here is more aggressive 
+ * with regards to providing a fallback in this context.
+ * https://www.tpgi.com/focus-visible-and-backwards-compatibility/
+ */
+
+ // Default fallback if :focus-visible unsupported.
+.wp-site-blocks :focus,
+.skip-link:focus,
+.box-title a:focus::after {
+	outline: 1px solid var(--wp--preset--color--highlight);
+}
+
+// Hide styles when input device is non-keyboard.
+.wp-site-blocks :focus:not(:focus-visible),
+.skip-link:focus:not(:focus-visible),
+.box-title a:focus:not(:focus-visible)::after {
+	outline-color: transparent; // For High Contrast colour schemes.
+	outline-width: .1875rem;
+}
+
+// Override default when :focus-visible supported and input device is via keyboard.
+.wp-site-blocks :focus-visible:not(.wp-block-button__link):not(form input):not(form button),
+.skip-link:focus-visible,
+.box-title a:focus-visible::after {
+	outline: .1875rem solid var(--wp--preset--color--highlight);
+	outline-offset: calc(.375 * var(--wp--custom--spacing--block-gap--small));
+}
+
+.skip-link:focus-visible {
+	outline-offset: 0;
+}
+
+// Site logo <a> must inherit dimensions for focus outline to appear.
+.wp-block-site-logo .custom-logo-link {
+	display: block;
+}
+
+
+
+/**
+ * Opinionated skip link styles are inlined by WordPress :(
+ * @todo PR to improve.
+ */
+.skip-link.screen-reader-text:focus {
+	background-color: var(--wp--preset--color--grey-dark) !important;
+	color: var(--wp--preset--color--white) !important;
+	left: var(--wp--custom--spacing--block-gap--small) !important;
+	top: var(--wp--custom--spacing--block-gap--small) !important;
+}
+
+/* Add a transparent outline for Windows HCM: 
+ * https://every-layout.dev/layouts/box/#the-solution
+ */
+.has-background {
+	outline: .25rem solid transparent;
+	outline-offset: -.25rem;
+}
+
+/**
+ * Help screen readers correctly report mark element.
+ *
+ * @link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+ */
+mark::before,
+mark::after {
+clip-path: inset(100%);
+clip: rect(1px, 1px, 1px, 1px);
+height: 1px;
+overflow: hidden;
+position: absolute;
+white-space: nowrap;
+width: 1px;
+}
+
+ mark::before {
+  content: " [highlight start] ";
+}
+
+mark::after {
+  content: " [highlight end] ";
+}
+
+/* Honour system preference to remove animations and transitions. */
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
